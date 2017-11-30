@@ -1,0 +1,23 @@
+#Base de faits
+
+#Base de règles
+Si
+
+
+
+#Buts 
+Mammiferes
+Mammiferes marins
+Poisson
+Amphibiens
+Reptiles
+Oiseaux
+Insectes
+Arachnides
+
+
+#Attributs
+Integer pattes >= 0
+Integer queue >= 0
+Integer aile >= 0
+Integer nageoire >= 0
