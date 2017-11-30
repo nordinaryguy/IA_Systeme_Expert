@@ -1,12 +1,24 @@
 #Base de faits
 
-#Base de règles
-Si
+#Base de rÃ¨gles
+Si pattes = 10 alors crustace
+Si pattes = 8 alors arachnide
+Si pattes = 6 alors insecte
+Si pattes = 4 alors vertebre
+Si pattes = 2 alors oiseau
+Si pattes = 0 alors 
+Si poils alors 
+Si plumes alors oiseau
+Si ailes alors oiseau
+Si ecailles alors
+si poumons ET branchies alors amphibie
+Si poumons ET NON branchies alors
+Si NON poumons ET branchies alors
 
 
 
 #Buts 
-Mammiferes
+Mammiferes terrestres ==> vertebre ET poils ET 4 pattes
 Mammiferes marins
 Poisson
 Amphibiens
@@ -14,10 +26,18 @@ Reptiles
 Oiseaux
 Insectes
 Arachnides
+Crustaces
 
 
 #Attributs
 Integer pattes >= 0
-Integer queue >= 0
-Integer aile >= 0
 Integer nageoire >= 0
+Boolean ecailles
+Boolean poumons
+Boolean branchies
+Boolean ailes
+Boolean queue
+Boolean poils
+Boolean vertebre
+Boolean plumes
+Boolean vivipare
