@@ -1,24 +1,21 @@
-#Base de faits
+﻿#Base de faits
 
 #Base de règles
-Si pattes = 10 alors crustace
-Si pattes = 8 alors arachnide
-Si pattes = 6 alors insecte
-Si pattes = 4 alors vertebre
-Si pattes = 2 alors oiseau
-Si pattes = 0 alors 
-Si poils alors 
-Si plumes alors oiseau
-Si ailes alors oiseau
-Si ecailles alors
-si poumons ET branchies alors amphibie
-Si poumons ET NON branchies alors
-Si NON poumons ET branchies alors
-
+SI poils ET temperConstante ET pattes = 4 ET poumons ET NOT branchies ET allaite ALORS mammifere terrestre
+Si temperConstante ET poumons ET NOT branchies ET allaite ET vertebre ALORS mammifere marin
+SI plumes ET temperConstante ET pattes = 2 et ailes ET poumons ET NOT branchies ET ovipare ET couve ALORS oiseau
+SI ecailles ET NOT temperConstante ET pattes = 4 ET poumons ET NOT branchies ET ovipare ET NOT couve ALORS reptile
+SI NOT (poils OU plumes OU ecailles OU peauDure) ET NOT temperConstante ET pattes = 4 ET branchies ET poumons ET ovipare ET NOT couve ALORS amphibien
+SI ecailles ET NOT temperConstante ET nageoires ET branchies ET ovipare ET NOT couve ALORS poisson
+SI peauDure ET pattes = 6 ET antennes ALORS insecte
+SI pattes = 8 ALORS arachnide
+SI peauDure OU carapace ET pattes = 10 ET antennes ET branchies ALORS crustace
+SI corpsMou ET NOT anneaux ALORS mollusque
+SI NOT vertebre ET coprsMou ET NOT anneaux ET pattes = 0 ET NOT ailes ET NOT antennes ET NOT coquille ALORS ver
 
 
 #Buts 
-Mammiferes terrestres ==> vertebre ET poils ET 4 pattes
+Mammiferes terrestres
 Mammiferes marins
 Poisson
 Amphibiens
@@ -27,11 +24,15 @@ Oiseaux
 Insectes
 Arachnides
 Crustaces
+Mollusques
+Vers
 
 
 #Attributs
 Integer pattes >= 0
 Integer nageoire >= 0
+Boolean peauDure
+Boolean carapace
 Boolean ecailles
 Boolean poumons
 Boolean branchies
@@ -41,3 +42,10 @@ Boolean poils
 Boolean vertebre
 Boolean plumes
 Boolean vivipare
+Boolean allaite
+Boolean ovipare
+Boolean couve
+Boolean temperConstante
+Boolean antennes
+Boolean corpsMou
+Boolean anneaux
