@@ -1,4 +1,4 @@
-﻿#Base de faits
+#Base de faits
 
 #Base de règles
 SI poils ET temperConstante ET pattes = 4 ET poumons ET NOT branchies ET allaite ALORS mammifere terrestre
@@ -15,7 +15,6 @@ SI NOT vertebre ET coprsMou ET NOT anneaux ET pattes = 0 ET NOT ailes ET NOT ant
 
 
 #Buts 
-Mammiferes terrestres
 Mammiferes marins
 Poisson
 Amphibiens
