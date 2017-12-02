@@ -31,6 +31,7 @@ public class MoteurInferences {
 		for (InterfaceFaits f : pr.getPremisses()) {
 			InterfaceFaits faitTrouve = bdf.chercher(f.getNom());
 			if (faitTrouve == null) {
+				faitTrouve = f;
 				bdf.ajouterFait(faitTrouve);
 			}
 			if (faitTrouve instanceof FaitsEntiers || faitTrouve instanceof FaitsEntiersNiveau0) {
