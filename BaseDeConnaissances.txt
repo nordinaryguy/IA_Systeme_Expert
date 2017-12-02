@@ -1,19 +1,9 @@
-#Base de faits
+﻿#Base de faits
++ temp = CONSTANTE
++ poumons = true
 
 #Base de règles
-Si pattes = 10 alors crustace
-Si pattes = 8 alors arachnide
-Si pattes = 6 alors insecte
-Si pattes = 4 alors vertebre
-Si pattes = 2 alors oiseau
-Si pattes = 0 alors 
-Si poils alors 
-Si plumes alors oiseau
-Si ailes alors oiseau
-Si ecailles alors
-si poumons ET branchies alors amphibie
-Si poumons ET NON branchies alors
-Si NON poumons ET branchies alors
+
 
 
 
@@ -30,14 +20,50 @@ Crustaces
 
 
 #Attributs
-Integer pattes >= 0
-Integer nageoire >= 0
-Boolean ecailles
-Boolean poumons
-Boolean branchies
-Boolean ailes
-Boolean queue
-Boolean poils
-Boolean vertebre
-Boolean plumes
-Boolean vivipare
+-- Vertebres
++ poils : Boolean
++ temperature : Enum{CONSTANTE, VARIABLE,ND}
++ pattes : Integer (0,2,4,6,8,10)
++ poumons : Boolean
++ allaite : Boolean
++ plumes : Boolean
++ ailes : Boolean
++ pondOeufs : Boolean
++ peau : Enum{ECAILLEUSE,NUE,DURE,POILUE,ND}
++ branchies : Boolean
++ nageoires : Boolean
+-- Invertebres
++ antennes : Boolean 
+
+------------------------------------------------------
+2ème thème acceptation d'un candidat dans une école d'ingénieurs en informatique
+
+#Attributs :
+------------
+Boolean accepte, niveauLanguesOk, niveauSciencesOk, entretienOk, bacSOk, motive, eleveInteresse;
+int moyBacS, questionsPoseesEntretien, lv1etLv2, moyPC, moyMath, moySI;
+
+#Base de faits : 
+----------------
+lv1etLv2 =  17;
+moyPC = 15;
+moyMath = 18;
+moySI = 16;
+eleveInteresse = true;
+
+#Base de règles : 
+-----------------
+R1) SI lv1etLv2 >= 15 ET bacSOk ALORS niveauLanguesOk;
+R2) SI moyBacS >= 10 ALORS bacSOk;
+R3) SI lv1etLv2 >= 15 ET moyPC >= 15 ET moyMath >= 15 ET moySI >= 15 ALORS moyBacS = 10;
+R4) SI moyPC >= 15 ET moyMath >= 15 ET moySI >= 15 ET bacSOk ALORS niveauSciencesOk;
+R5) SI eleveInteresse ALORs questionsPoseesEntretien = 5;
+R6) SI questionsPoseesEntretien >= 4 ALORS motive;
+R7) SI motive ALORS entretienOk;
+R8) SI niveauLanguesOk ET niveauSciencesOk ET entretienOk ALORS accepte  
+
+
+
+
+
+
