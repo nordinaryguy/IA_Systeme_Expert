@@ -64,6 +64,17 @@ R8) SI niveauLanguesOk ET niveauSciencesOk ET entretienOk ALORS accepte
 
 
 
+++++++++++++++++++++++++++++++
++ Moteur Inférences Ordre 0+ +
+++++++++++++++++++++++++++++++
 
 
+---------------------------
+#  Chaînage avant lancé   #
+---------------------------	
+
+
+++++++++++++++++++++++++++++++
++     Données initiales      +
+++++++++++++++++++++++++++++++
 

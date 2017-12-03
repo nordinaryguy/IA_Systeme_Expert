@@ -17,10 +17,14 @@ public class MainProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//SEGUI segui = new SEGUI();
+		String initDatas = "++++++++++++++++++++++++++++++\r\n" + 
+				"+     Données initiales      +\r\n" + 
+				"++++++++++++++++++++++++++++++";
+		System.out.println(initDatas);
 		
 		//Faits de niveau 0 entres en dur : 
 		InterfaceFaits fait1 = new FaitsEntiersNiveau0("lv1etLv2", 17, 0);
-		InterfaceFaits fait2 = new FaitsEntiersNiveau0("moyPC", 15, 0);
+		InterfaceFaits fait2 = new FaitsEntiersNiveau0("moyPC", 18, 0);
 		InterfaceFaits fait3 = new FaitsEntiersNiveau0("moyMath", 18, 0);
 		InterfaceFaits fait4 = new FaitsEntiersNiveau0("moySI", 16, 0);
 		InterfaceFaits fait5 = new FaitsBooleens("eleveInteresse", true, 0);
@@ -118,9 +122,8 @@ public class MainProgram {
 		System.out.println(bdf.toString());
 		System.out.println(bdr.toString());
 		
-		//Création du moteur
-		System.out.println("Création du moteur d'inférences");
-		MoteurInferences moteur = new MoteurInferences(bdf, bdr);
+		//Création du moteurs
+		MoteurInferences moteur = new MoteurInferences(bdf, bdr, conclusionR8);
 		
 		//Lancement du chainage avant 
 		moteur.chainageAvant();
