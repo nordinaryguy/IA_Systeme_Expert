@@ -126,7 +126,18 @@ public class MainProgram {
 		MoteurInferences moteur = new MoteurInferences(bdf, bdr, conclusionR8);
 		
 		//Lancement du chainage avant 
-		moteur.chainageAvant();
+		//moteur.chainageAvant();
+		
+		//Lancement chainage arrière 
+		String str = "\n---------------------------\r\n" + 
+				"#  Chaînage arrière lancé   #\r\n" + 
+				"---------------------------\n";
+		System.out.println(str);
+		if (moteur.chainagearriere(conclusionR8)) {
+			System.out.println("SUCCES!");
+		}else {
+			System.out.println("ECHEC");
+		}
 		
 	}
 }

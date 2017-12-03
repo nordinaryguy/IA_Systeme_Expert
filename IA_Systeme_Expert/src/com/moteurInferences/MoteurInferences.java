@@ -1,5 +1,7 @@
 package com.moteurInferences;
 
+import java.util.ArrayList;
+
 import com.faits.BaseDeFaits;
 import com.faits.FaitsEntiers;
 import com.faits.FaitsEntiersNiveau0;
@@ -26,12 +28,11 @@ public class MoteurInferences {
 	}
 
 	public void chainageAvant() {
-		//this.resoudre();
 		String str = "\n---------------------------\r\n" + 
 				"#  Chaînage avant lancé   #\r\n" + 
 				"---------------------------\n";
 		System.out.println(str);
-		
+
 		boolean butAtteint = this.trouverBut();
 		Regles r = this.trouverRegle();
 		while (!butAtteint && r!=null) {
@@ -55,9 +56,54 @@ public class MoteurInferences {
 			System.out.println("Fin de l'algorithme du chaînage avant. Le but [" + this.but.getNom()+ "] n'a pas été atteint.");
 			System.out.println("Désolé votre candidature n'a pas été retenue. ");
 		}
-		
-		//boolean regleApplicable = this.estApplicable(r);
 	}
+
+
+	public boolean chainagearriere(InterfaceFaits F) {
+
+		// Cas où le but est deja dans la base de faits initialement.
+		if (this.bdf.chercher(F.getNom())!=null) {
+			return true;
+		}else {
+			ArrayList<Regles> ER = new ArrayList<Regles>();
+			for (Regles regle : this.bdr.getRegles()) {
+				if (regle.getConclusion().equals(F)) {
+					ER.add(regle);
+					System.out.println(regle.toString());
+				}
+			}
+			boolean valide;
+			do {
+				valide = true;
+				if (ER.size()==0) {
+					break;
+				}
+				Regles R = ER.get(0);
+				ER.remove(R);
+				for (InterfaceFaits Fr : R.getPremisses()) {
+					valide = valide && this.chainagearriere(Fr);
+				}
+			} while (valide || ER!=null);
+			if (valide && ER.size()==0) {
+				System.out.println("Ajout dans la base de faits de la conclusion : ["+F.getNom()+"]");
+				this.bdf.ajouterFait(F);
+				System.out.println("==============================================BASE DE FAITS===================================================");
+				System.out.println("La base de faits a été mise à jour. Affichage de la nouvelle base de faits (Nombre de faits : "+this.bdf.getFaits().size()+") : ");
+				System.out.println(this.bdf.toString());
+				System.out.println("============================================================================================================\n");
+				if (this.but.equals(F)) {
+					System.out.println("Fin de l'algorithme du chaînage arrière. Le but [" + this.but.getNom()+ "] a  été atteint.");
+					System.out.println("Candidature acceptée ! Bienvenue dans notre école :)");
+				}
+			}else {
+				System.out.println("Fin de l'algorithme du chaînage arrière. Le but [" + F.getNom()+ "] n'a pas été atteint.");
+				System.out.println("Désolé votre candidature n'a pas été retenue. ");
+				return false;
+			}
+			return valide;
+		}
+	}
+
 
 	private Regles trouverRegle() {
 		for (Regles r : this.bdr.getRegles()) {
