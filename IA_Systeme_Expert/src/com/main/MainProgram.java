@@ -1,6 +1,7 @@
 package com.main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.faits.BaseDeFaits;
 import com.faits.FaitsBooleens;
@@ -125,19 +126,29 @@ public class MainProgram {
 		//Création du moteurs
 		MoteurInferences moteur = new MoteurInferences(bdf, bdr, conclusionR8);
 		
-		//Lancement du chainage avant 
-		//moteur.chainageAvant();
 		
-		//Lancement chainage arrière 
-		String str = "\n---------------------------\r\n" + 
-				"#  Chaînage arrière lancé   #\r\n" + 
-				"---------------------------\n";
-		System.out.println(str);
-		if (moteur.chainagearriere(conclusionR8)) {
-			System.out.println("SUCCES!");
+		System.out.println("Choisissez le type de chainage : ");
+		System.out.println("Tapez 1 pour chainage avant, 2 pour chainage arrière : ");
+		Scanner sc = new Scanner(System.in);
+		int choix = sc.nextInt();
+		if (choix==2) {
+			//Lancement chainage arrière
+			String str = "\n---------------------------\r\n" + 
+					"#  Chaînage arrière lancé   #\r\n" + 
+					"---------------------------\n";
+			System.out.println(str);
+			if (moteur.chainagearriere(conclusionR8)) {
+				System.out.println("SUCCES!");
+			}else {
+				System.out.println("ECHEC");
+			}
 		}else {
-			System.out.println("ECHEC");
+			
+			//Lancement du chainage avant 
+			moteur.chainageAvant();
 		}
 		
+		
+		 
 	}
 }
